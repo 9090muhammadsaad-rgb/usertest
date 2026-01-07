@@ -1,34 +1,85 @@
 <!DOCTYPE html>
-<html>
-<head><title>Login Test</title></head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile UI Message</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100-vh;
+        }
+        .mobile-container {
+            width: 320px;
+            height: 560px;
+            background-color: white;
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            overflow: hidden;
+            border: 8px solid #333;
+            position: relative;
+        }
+        .screen-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+        }
+        .message-box {
+            background-color: #e7f3ff;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            color: #1c1e21;
+            font-size: 18px;
+            border-left: 5px solid #0084ff;
+        }
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+        }
+    </style>
+</head>
 <body>
-    <h2>Login Page</h2>
-    <input type="text" id="user" placeholder="Username"><br>
-    <input type="password" id="pass" placeholder="Password"><br>
-    <button onclick="login()">Login</button>
-    <p id="msg"></p>
+
+    <div class="mobile-container">
+        <div class="screen-content">
+            <div class="message-box">
+                "Agar Meassage agaya haim Toh Whatsapp par bata doo ... S**"
+            </div>
+            
+            <button class="whatsapp-btn" onclick="openWhatsapp()">
+                Open Whatsapp Button
+            </button>
+        </div>
+    </div>
 
     <script>
-        async function login() {
-            let u = document.getElementById('user').value;
-            let p = document.getElementById('pass').value;
-            let msg = document.getElementById('msg');
-
-            // JSON file fetch karna
-            let response = await fetch('info.json');
-            let data = await response.json();
-
-            // Match karna
-            let found = data.users.find(user => user.username === u && user.password === p);
-
-            if (found) {
-                msg.style.color = "green";
-                msg.innerHTML = "Correct Password!";
-            } else {
-                msg.style.color = "red";
-                msg.innerHTML = "Wrong Password!";
-            }
+        function openWhatsapp() {
+            // Aap yahan apna number bhi add kar sakte hain: https://wa.me/91XXXXXXXXXX
+            window.open("https://wa.me/", "_blank");
         }
     </script>
+
 </body>
 </html>
